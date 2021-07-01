@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const dbConfig = require("./app/config/db.config")
 const app = express();
 
 var corsOptions = {
@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
+
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
@@ -45,11 +49,11 @@ db.mongoose
   });
 
 function initial() {
-  Role.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
+  Role.estimatedDocumentCount((error, count) => {
+    if (!error && count === 0) {
       new Role({
         name: "user"
-      }).save(err => {
+      }).save((err) => {
         if (err) {
           console.log("error", err);
         }
