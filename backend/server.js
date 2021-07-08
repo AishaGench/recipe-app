@@ -24,6 +24,9 @@ app.get("/", (req, res) => {
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
+var recipesRouter = require('./app/routes/recipe.routes');
+app.use('/api/recipes', recipesRouter);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
