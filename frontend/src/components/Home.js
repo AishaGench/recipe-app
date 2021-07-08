@@ -26,9 +26,9 @@ const Home = () => {
       <ul className="results__list">
         {content.map((data)=>{
                return <li>
-                    <a className="results__link results__link--active" href="#23456">
+                    <a className="results__link results__link--active" href={`recipe/${data.id}`}>
                         <figure className="results__fig">
-                            <img src={data.image_url} alt={data.title}/>
+                            <img src={data.image_url} alt={data.title}></img>
                         </figure>
                         <div className="results__data">
                             <h4 className="results__name">{data.title}</h4>

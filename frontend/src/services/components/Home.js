@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserService from "../user.service";
 import logo from "../components"
+import Recipe from "../../components/Recipe";
 
 const Home = () => {
   const [content, setContent] = useState("");
@@ -56,6 +57,7 @@ const Home = () => {
                         </li>
                     </ul>
                 </div>
+                {Recipe}
             </div>
         </header>
     </div>
